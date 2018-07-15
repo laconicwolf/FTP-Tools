@@ -160,8 +160,6 @@ def discover_ftp(addr):
             if dirs:
                 with lock:
                     print('[+] {0}:{1} - Directory Listing Received'.format(addr, port))
-            if args.verbose:
-                with lock:
                     print(all_dirs)
     host_data.extend((addr, port, banner, anonymous_login, all_dirs))
     data.append(host_data)
@@ -212,8 +210,8 @@ if __name__ == '__main__':
     parser.add_argument("-t", "--threads",
                         nargs="?",
                         type=int,
-                        default=5,
-                        help="Specify number of threads (default=5)")
+                        default=20,
+                        help="Specify number of threads (default=20)")
     args = parser.parse_args()
 
     if not args.input_filename and not args.range and not args.ipaddress:
